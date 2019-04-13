@@ -1,0 +1,274 @@
+<Gerenciador>:
+    Menu:
+        name: 'menu'
+    Tarefas:
+        name:'tarefas'
+    Slides:
+        name: 'slides'
+    Abas:
+        name: 'abas'
+        
+<Menu>:
+    BoxLayout:
+        padding: 80
+        spacing:35
+        canvas:
+            Color:
+                rgba: 0,0,0,1
+            Rectangle:
+                pos: self.pos
+                size: self.size
+            Color:
+                rgba: 1,1,1,0.1
+            Rectangle:
+                pos: self.x + self.width/5, self.y + self.height/16
+                size: 500, 550
+                source: 'Imagens/arm.png'
+        orientation: 'vertical'
+        Image:
+            allow_stretch: True
+            size_hint_y:None
+            size: 300,300
+            source: 'Imagens/IFv.png'
+        BoxLayout:
+            orientation: 'vertical'
+            spacing:10
+            FloatLayout:
+                Label:
+                    size_hint_x: None
+                    pos: 255, 170
+                    text: 'Usuario:'
+                TextInput:
+                    size_hint_x: None
+                    pos: 340, 170
+                    id: eUsername
+                    width: 200
+            FloatLayout:
+                Label:
+                    size_hint_x: None
+                    pos: 255, 140
+                    text: 'Senha:'
+                TextInput:
+                    size_hint_x: None
+                    pos: 340, 140
+                    id: ePassword
+                    width: 200
+            BoxLayout:
+                spacing: 10
+                Label:
+                    size_hint_x: None
+                    width: 400
+                Botao:
+                    size_hint_x: None
+                    id: btAuth
+                    text: 'OK'
+                    on_release: app.root.current = 'abas'
+
+<Abas>:
+    BoxLayout:
+        orientation: 'vertical'
+        spacing: 2
+        canvas:
+            Color:
+                rgba: 0,0,0,1
+            Rectangle:
+                pos: self.pos
+                size: self.size
+            Color:
+                rgba: 1,1,1,0.1
+            Rectangle:
+                pos: self.x + self.width/4, self.y + self.height/8
+                size: 400, 450
+                source: 'Imagens/arm.png'
+        ActionBar:
+            ActionView:
+                ActionPrevious:
+                    title:'Abas'
+                    app_icon: 'Imagens/icon.png'
+                    on_release: app.root.current = 'menu'
+                ActionButton:
+                    on_release: app.root.setup()
+                    Image:
+                        allow_stretch: True
+                        source: 'Imagens/setup.png'
+                        pos: self.parent.x + self.width/2, self.parent.y + self.height/2
+                        size: self.parent.height/2., self.parent.height/2.
+                ActionButton:
+                    on_release: app.get_running_app().stop()
+                    Image:
+                        allow_stretch: True
+                        source: 'Imagens/logout.png'
+                        pos: self.parent.x + self.width/2, self.parent.y + self.height/2
+                        size: self.parent.height/2., self.parent.height/2.
+        BoxLayout:
+            orientation: 'vertical'
+            padding: 220
+            spacing: 10
+            Botao:
+                text: 'Tarefas'
+                on_release: app.root.current = "tarefas"
+            Botao:
+                text: 'Slides'
+                on_release: app.root.current = "slides"
+
+
+<Tarefas>:
+    BoxLayout:
+        orientation: 'vertical'
+        spacing: 2
+        canvas:
+            Color:
+                rgba: 0,0,0,1
+            Rectangle:
+                pos: self.pos
+                size: self.size
+            Color:
+                rgba: 1,1,1,0.1
+            Rectangle:
+                pos: self.x + self.width/4, self.y + self.height/8
+                size: 400, 450
+                source: 'Imagens/arm.png'
+        ActionBar:
+            ActionView:
+                ActionPrevious:
+                    title:'Tarefas'
+                    app_icon: 'Imagens/icon.png'
+                    on_release: app.root.current = 'abas'
+                ActionButton:
+                    on_release: app.root.setup()
+                    Image:
+                        allow_stretch: True
+                        source: 'Imagens/setup.png'
+                        pos: self.parent.x + self.width/2, self.parent.y + self.height/2
+                        size: self.parent.height/2., self.parent.height/2.
+                ActionButton:
+                    on_release: app.get_running_app().stop()
+                    Image:
+                        allow_stretch: True
+                        source: 'Imagens/logout.png'
+                        pos: self.parent.x + self.width/2, self.parent.y + self.height/2
+                        size: self.parent.height/2., self.parent.height/2.
+
+        ScrollView:
+            BoxLayout:
+                id: box
+                orientation: 'vertical'
+                size_hint_y: None
+                height: self.minimum_height
+        BoxLayout:
+            padding: 1
+            size_hint_y:None
+            height:40
+            Label:
+                size_hint_x:None
+                width:80
+                text:'Descricao:'
+            TextInput:
+                focus: True
+                font_size: 20
+                id: texto
+            Label:
+                size_hint_x:None
+                width:75
+                text:'Comando:'
+            TextInput:
+                size_hint_x:None
+                width:80
+                font_size: 20
+                id: text_port
+            Button:
+                size_hint_x:None
+                width:60
+                text: '+'
+                on_release: root.addWidget()
+
+<Slides>:
+    BoxLayout:
+        orientation: 'vertical'
+        spacing: 2
+        canvas:
+            Color:
+                rgba: 0,0,0,1
+            Rectangle:
+                pos: self.pos
+                size: self.size
+            Color:
+                rgba: 1,1,1,0.1
+            Rectangle:
+                pos: self.x + self.width/4, self.y + self.height/8
+                size: 400, 450
+                source: 'Imagens/arm.png'
+        ActionBar:
+            ActionView:
+                ActionPrevious:
+                    title:'Comandos'
+                    app_icon: 'Imagens/icon.png'
+                    on_release: app.root.current = 'abas'
+                ActionButton:
+                    on_release: app.root.setup()
+                    Image:
+                        allow_stretch: True
+                        source: 'Imagens/setup.png'
+                        pos: self.parent.x + self.width/2, self.parent.y + self.height/2
+                        size: self.parent.height/2., self.parent.height/2.
+                ActionButton:
+                    on_release: app.get_running_app().stop()
+                    Image:
+                        allow_stretch: True
+                        source: 'Imagens/logout.png'
+                        pos: self.parent.x + self.width/2, self.parent.y + self.height/2
+                        size: self.parent.height/2., self.parent.height/2.
+        ScrollView:
+            BoxLayout:
+                orientation: 'vertical'
+                size_hint: 0.2, None
+                height: self.minimum_height
+                spacing: 30
+                padding: 10
+                Label:
+                    height: 100
+                    text: "LED VERMELHO - ldVm"
+                Label:
+                    height: 100
+                    text: "LED AMARELO - ldAm"
+                Label:
+                    height: 100
+                    text: "LED VERDE - ldVd"
+
+<Tarefa>:
+    size_hint_y:None
+    height:100
+    BtSend:
+        allow_stretch: True
+        size_hint: None,None
+        on_release: root.cmdSend(cmd=root.ids.lb_cmd.text)
+    Label:
+        font_size:30
+        canvas.before:
+            Color:
+                rgba: 0.1,0.1,0.1,1
+            Rectangle:
+                pos: self.x, self.y + self.height
+                size: self.width, 1
+            Rectangle:
+                pos: self.pos
+                size: self.width, 1
+        id:label
+        markup: True
+    Label:
+        font_size:30
+        canvas.before:
+            Color:
+                rgba: 0.1,0.1,0.1,1
+            Rectangle:
+                pos: self.x, self.y + self.height
+                size: self.width, 1
+            Rectangle:
+                pos: self.x, self.y
+                size: self.width, 1
+        id:lb_cmd
+        markup: True
+    BtClose:
+        size_hint: None,None
+        size: self.width, self.width-30
+        on_release: app.root.get_screen('tarefas').removeWidget(root)
